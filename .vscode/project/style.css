@@ -1,0 +1,39 @@
+.ukuran {
+    width: 750px;
+    height: 750px;
+}
+.jarak {
+    padding-left: 60px;
+    padding-right: 40px;
+}
+.bg {
+    background-image: url(file:///C:/Users/USER/Videos/My%20Bini/elaina-tipsy-wandering-witch-moewalls-com.mp4);
+}
+.jarak-img{
+    margin-top: 60px;
+    margin-bottom: 100px;
+}
+.slide1{
+    margin-top: 50px;
+    margin-bottom: 100px;
+}
+.slide2{
+    margin-top: 60px;
+    margin-bottom: 250px;
+}
+.slide3{
+    margin-top: 40px;
+    margin-bottom: 250px;
+}
+
+.whatsapp-float{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050;
+    background-color: rgb(57, 196, 206);
+    color: black;
+    padding: 12px 20px;
+    border-radius: 50px;
+    text-decoration: none;
+}

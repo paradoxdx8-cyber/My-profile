@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabel Barang Versi Word</title>
+  <style>
+    /* Desain kontainer agar menyerupai halaman kertas Word */
+    body {
+      background-color: #f4f4f4;
+      font-family: "Calibri", "Arial", sans-serif;
+      padding: 40px;
+    }
+
+    .halaman-word {
+      background-color: #ffffff;
+      width: 80%;
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 50px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Gaya Tabel persis bawaan Microsoft Word */
+    .table-word {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11pt;
+      color: #000000;
+      line-height: 1.2;
+    }
+
+    /* Border tipis 0.5pt khas Word (warna abu-abu gelap #7F7F7F) */
+    .table-word th, 
+    .table-word td {
+      border: 1px solid #7f7f7f;
+      padding: 6px 8px;
+      vertical-align: middle;
+    }
+
+    /* Desain KEPALA TABEL (<thead>) - Abu-abu Formal Word */
+    .table-word thead tr {
+      background-color: #f2f2f2;
+    }
+    
+    .table-word th {
+      font-weight: bold;
+      text-align: center;
+    }
+
+    /* Desain KAKI TABEL (<tfoot>) */
+    .table-word tfoot tr {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+
+    /* Alignment kelas pembantu */
+    .text-center { text-align: center; }
+    .text-right { text-align: right; }
+    .text-left { text-align: left; }
+  </style>
+</head>
+<body>
+
+  <!-- Simulasi lembar kerja Word -->
+  <div class="halaman-word">
+    
+    <h2 style="font-size: 14pt; margin-top: 0; margin-bottom: 5px; color: #000000;">DAFTAR PEMBELIAN BARANG</h2>
+    <p style="font-size: 11pt; color: #595959; margin-bottom: 15px;">Nota Internal Gudang</p>
+
+    <!-- Mulai Tabel -->
+    <table class="table-word">
+      <thead>
+        <tr>
+          <th style="width: 8%;">No</th>
+          <th style="width: 42%;">Nama Barang</th>
+          <th style="width: 12%;">Qty</th>
+          <th style="width: 18%;">Harga</th>
+          <th style="width: 20%;">Total</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <tr>
+          <td class="text-center">1</td>
+          <td class="text-left">Kertas HVS A4 80gr</td>
+          <td class="text-center">5</td>
+          <td class="text-right">Rp55.000</td>
+          <td class="text-right">Rp275.000</td>
+        </tr>
+        <tr>
+          <td class="text-center">2</td>
+          <td class="text-left">Tinta Printer Hitam</td>
+          <td class="text-center">2</td>
+          <td class="text-right">Rp120.000</td>
+          <td class="text-right">Rp240.000</td>
+        </tr>
+        <tr>
+          <td class="text-center">3</td>
+          <td class="text-left">Map Binder Plastik F4</td>
+          <td class="text-center">10</td>
+          <td class="text-right">Rp15.000</td>
+          <td class="text-right">Rp150.000</td>
+        </tr>
+      </tbody>
+      
+      <tfoot>
+        <tr>
+          <!-- Menggabungkan 3 kolom (No, Nama Barang, Qty) menjadi satu dengan colspan -->
+          <td colspan="3" class="text-center">TOTAL KESELURUHAN</td>
+          <td colspan="2" class="text-right">Rp665.000</td>
+        </tr>
+      </tfoot>
+    </table>
+
+  </div>
+
+</body>
+</html>

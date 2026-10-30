@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Contoh Tabel HTML</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        thead {
+            background-color: #f2f2f2;
+        }
+        tfoot {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<table>
+    <!-- Bagian Kepala Tabel -->
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Nama Barang</th>
+            <th>Kategori</th>
+            <th>Jumlah</th>
+            <th>Harga Total</th>
+        </tr>
+    </thead>
+
+    <!-- Bagian Kaki Tabel -->
+    <tfoot>
+        <tr>
+            <!-- Menggunakan colspan untuk menggabungkan 4 kolom -->
+            <td colspan="4">Total Seluruh Harga</td>
+            <td>Rp 30.000</td>
+        </tr>
+    </tfoot>
+
+    <!-- Bagian Isi Tabel -->
+    <tbody>
+        <tr>
+            <td>1</td>
+            <!-- Menggunakan rowspan untuk menggabungkan 2 baris -->
+            <td rowspan="2">Alat Tulis</td>
+            <td>Pulpen</td>
+            <td>5</td>
+            <td>Rp 10.000</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <!-- Baris kedua untuk alat tulis, kolom nama barang digabung oleh rowspan di atas -->
+            <td>Buku</td>
+            <td>2</td>
+            <td>Rp 20.000</td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

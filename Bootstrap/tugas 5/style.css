@@ -1,0 +1,77 @@
+
+@font-face {
+  font-family: "anna";
+  src: url("./font/anna.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+.anna {
+  font-family: "anna", sans-serif;}
+
+  @font-face {
+  font-family: "circus";
+  src: url("./font/circus.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+
+.circus {
+  font-family: "circus", sans-serif;}
+
+
+
+
+
+
+
+
+
+
+
+.nav.navbar {
+    z-index: 1;
+}
+
+.jumbotron .row-img{
+        width: 100%;
+        height: 100vh;
+        background-image: url("https://w.wallhaven.cc/full/4o/wallhaven-4o68jl.jpg");
+        background-position: center;
+        position: relative;
+    }
+
+.jumbotron .row-img::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #0537427a;
+}
+
+.about .row-img{
+    width: 100%;
+}
+.about .row-img .md5:nth-child(1){
+    background-color: #0A1931;
+    width: 60%;
+    height: 100vh;
+}
+.about .row-img .md5:nth-child(2){
+    background-image: url("https://w.wallhaven.cc/full/d6/wallhaven-d6d37o.jpg");
+    width: 60%;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+}
+.service{
+    background-image: url("https://w.wallhaven.cc/full/42/wallhaven-422lyx.jpg");
+    background-color: #293b5f;
+    height: 400px;
+}
+.teknologi {
+    background-color: #03256C;
+}

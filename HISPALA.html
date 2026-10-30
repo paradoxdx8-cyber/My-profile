@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NATBINARI - Ekstrakurikuler Pecinta Alam & Kehutanan SMK Bina Putra Mandiri</title>
+    
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bs-forest-green: #1b4332;
+            --bs-leaf-green: #2d6a4f;
+            --bs-light-green: #52b788;
+            --bs-earth-brown: #5c4033;
+            --bs-soft-cream: #f8f9fa;
+            --bs-accent-amber: #d4a373;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #faf9f6;
+            color: #2b2b2b;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .font-heading {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navbar Customization */
+        .navbar {
+            background-color: var(--bs-forest-green) !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: #fff !important;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-link {
+            color: rgba(255,255,255,0.85) !important;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--bs-accent-amber) !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(27, 67, 50, 0.75), rgba(42, 31, 26, 0.8)), url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1920&q=80') no-repeat center center;
+            background-size: cover;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            color: white;
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .hero-badge {
+            background-color: rgba(212, 163, 115, 0.2);
+            color: var(--bs-accent-amber);
+            border: 1px solid var(--bs-accent-amber);
+            padding: 6px 16px;
+            border-radius: 50rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Buttons */
+        .btn-natbinari-primary {
+            background-color: var(--bs-light-green);
+            color: #fff;
+            border: none;
+            padding: 12px 28px;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-natbinari-primary:hover {
+            background-color: var(--bs-leaf-green);
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(45, 106, 79, 0.3);
+        }
+
+        .btn-natbinari-outline {
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #fff;
+            padding: 10px 26px;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-natbinari-outline:hover {
+            background-color: #fff;
+            color: var(--bs-forest-green);
+            transform: translateY(-2px);
+        }
+
+        /* Cards & Sections */
+        .section-padding {
+            padding: 90px 0;
+        }
+
+        .bg-soft-cream {
+            background-color: #f3f0ea;
+        }
+
+        .card-division {
+            background: #ffffff;
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-division:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(27, 67, 50, 0.12);
+        }
+
+        .division-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(82, 183, 136, 0.15);
+            color: var(--bs-leaf-green);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Gallery Item */
+        .gallery-item {
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            height: 260px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(27,67,50,0.9), transparent);
+            color: white;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: 100%;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Article Cards */
+        .article-card {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            border: none;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+            transition: transform 0.3s;
+        }
+
+        .article-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Registration Form Section */
+        .form-container {
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 15px 40px rgba(27, 67, 50, 0.08);
+            border-top: 5px solid var(--bs-light-green);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bs-forest-green);
+            color: #d1e7dd;
+        }
+
+        footer h5 {
+            color: #ffffff;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .social-btn {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255,255,255,0.1);
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+            text-decoration: none;
+            margin-right: 8px;
+        }
+
+        .social-btn:hover {
+            background-color: var(--bs-light-green);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Custom alert message box */
+        #customAlert {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+            max-width: 350px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Custom Message Box to replace alert() -->
+    <div id="customAlert" class="alert alert-success alert-dismissible fade show" role="alert">
+        <h4 class="alert-heading fw-bold mb-1"><i class="fas fa-check-circle me-2"></i>Berhasil!</h4>
+        <p id="customAlertText" class="mb-0 text-sm">Formulir pendaftaran berhasil dikirim.</p>
+        <button type="button" class="btn-close" onclick="closeCustomAlert()" aria-label="Close"></button>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <i class="fas fa-tree text-success-emphasis fs-4" style="color: #52b788;"></i>
+                <div>
+                    <span class="d-block lh-1 fs-5">NATBINARI</span>
+                    <small class="text-white-50" style="font-size: 0.7rem; letter-spacing: 1px;">SMK BINA PUTRA MANDIRI</small>
+                </div>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center gap-lg-3">
+                    <li class="nav-item"><a class="nav-link active" href="#beranda">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tentang">Tentang Kami</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#divisi">Program Kerja</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#galeri">Galeri Rimba</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#berita">Berita</a></li>
+                    <li class="nav-item mt-2 mt-lg-0">
+                        <a href="#pendaftaran" class="btn btn-natbinari-primary btn-sm px-3 py-2">Daftar Anggota</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="hero-section">
+        <div class="container text-center text-lg-start">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto mx-lg-0">
+                    <span class="hero-badge">
+                        <i class="fas fa-leaf me-2"></i> Ekstrakurikuler Pecinta Alam & Kehutanan
+                    </span>
+                    <h1 class="display-4 fw-bold font-heading mb-3">Lestari Alamku, Tangguh Negeriku!</h1>
+                    <p class="lead text-white-50 mb-4 col-lg-10 mx-auto mx-lg-0">
+                        Wadah pembentukan karakter tangguh, kepemimpinan, jiwa petualang, serta kepedulian terhadap konservasi alam dan kehutanan siswa-siswi SMK Bina Putra Mandiri (SMK BPM).
+                    </p>
+                    <div class="d-flex flex-wrap gap-3 justify-content-center justify-content-lg-start">
+                        <a href="#pendaftaran" class="btn btn-natbinari-primary btn-lg">Gabung Bersama Kami</a>
+                        <a href="#tentang" class="btn btn-natbinari-outline btn-lg">Kenali Natbinari</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tentang Kami Section -->
+    <section id="tentang" class="section-padding bg-soft-cream">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="position-relative">
+                        <img src="https://images.unsplash.com/photo-1511497584788-876761142197?auto=format&fit=crop&w=800&q=80" alt="Tentang Natbinari" class="img-fluid rounded-4 shadow-lg w-100" style="object-fit: cover; height: 400px;">
+                        <div class="position-absolute bottom-0 start-0 bg-white p-4 rounded-4 shadow m-3 border-start border-4 border-success d-none d-sm-block">
+                            <h4 class="font-heading mb-1 fw-bold text-dark">10+ Tahun</h4>
+                            <p class="mb-0 text-muted small">Menjaga tradisi rimba dan aksi konservasi nyata.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <span class="text-uppercase fw-bold small tracking-wider text-success" style="letter-spacing: 2px;">PROFIL & SEJARAH</span>
+                    <h2 class="font-heading fw-bold mb-4 display-6">Mengenal Lebih Dekat Natbinari SMK Bina Putra Mandiri</h2>
+                    <p class="text-muted mb-4">
+                        <strong>Natbinari</strong> adalah ekstrakurikuler resmi di SMK Bina Putra Mandiri yang berfokus pada kegiatan petualangan alam bebas, pendidikan lingkungan hidup, kehutanan, serta mitigasi bencana dan SAR. Nama "Natbinari" merepresentasikan semangat generasi muda pembina kelestarian bumi nusantara.
+                    </p>
+                    <div class="row g-3 mb-4">
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="text-success fs-4 mt-1"><i class="fas fa-check-circle"></i></div>
+                                <div>
+                                    <h5 class="fw-bold mb-1 fs-6">Mental Tangguh</h5>
+                                    <p class="text-muted small mb-0">Melatih ketahanan fisik dan mental melalui diksar kepencintaalaman.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-start gap-3">
+                                <div class="text-success fs-4 mt-1"><i class="fas fa-check-circle"></i></div>
+                                <div>
+                                    <h5 class="fw-bold mb-1 fs-6">Konservasi Nyata</h5>
+                                    <p class="text-muted small mb-0">Aksi reboisasi, pembersihan gunung, dan pelestarian flora fauna.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#divisi" class="btn btn-outline-dark px-4 py-2 fw-semibold rounded-pill">Lihat Program Kerja <i class="fas fa-arrow-right ms-2"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Kerja / Divisi Utama -->
+    <section id="divisi" class="section-padding">
+        <div class="container">
+            <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+                <span class="text-uppercase fw-bold small text-success" style="letter-spacing: 2px;">DIVISI & PROGRAM KERJA</span>
+                <h2 class="font-heading fw-bold display-6 mt-1 mb-3">Empat Pilar Utama Kegiatan Natbinari</h2>
+                <p class="text-muted">Setiap anggota dibekali keahlian khusus yang terbagi ke dalam empat bidang operasional utama penjelajahan dan kehutanan.</p>
+            </div>
+            <div class="row g-4">
+                <!-- Divisi 1 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-division p-4 h-100 d-flex flex-column">
+                        <div class="division-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h4 class="font-heading fw-bold fs-5 mb-3">Konservasi & Reboisasi</h4>
+                        <p class="text-muted small mb-4 flex-grow-1">Fokus pada pembibitan tanaman hutan, penghijauan lahan kritis, edukasi ekosistem, serta perlindungan keanekaragaman hayati.</p>
+                        <span class="badge bg-light text-success border border-success-subtle align-self-start">Bidang Lingkungan</span>
+                    </div>
+                </div>
+                <!-- Divisi 2 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-division p-4 h-100 d-flex flex-column">
+                        <div class="division-icon">
+                            <i class="fas fa-mountain"></i>
+                        </div>
+                        <h4 class="font-heading fw-bold fs-5 mb-3">Gunung Hutan (Mountaineering)</h4>
+                        <p class="text-muted small mb-4 flex-grow-1">Pelatihan navigasi darat (peta & kompas), teknik survival di alam liar, manajemen ekspedisi, serta pendakian gunung yang aman dan bertanggung jawab.</p>
+                        <span class="badge bg-light text-success border border-success-subtle align-self-start">Bidang Petualangan</span>
+                    </div>
+                </div>
+                <!-- Divisi 3 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-division p-4 h-100 d-flex flex-column">
+                        <div class="division-icon">
+                            <i class="fas fa-first-aid"></i>
+                        </div>
+                        <h4 class="font-heading fw-bold fs-5 mb-3">SAR & Pertolongan Pertama</h4>
+                        <p class="text-muted small mb-4 flex-grow-1">Keahlian pertolongan darurat medis di alam bebas (Wilderness First Aid), evakuasi vertikal/horizontal, serta pencarian korban tersesat.</p>
+                        <span class="badge bg-light text-success border border-success-subtle align-self-start">Bidang Kemanusiaan</span>
+                    </div>
+                </div>
+                <!-- Divisi 4 -->
+                <div class="col-md-6 col-lg-3">
+                    <div class="card-division p-4 h-100 d-flex flex-column">
+                        <div class="division-icon">
+                            <i class="fas fa-camera-retro"></i>
+                        </div>
+                        <h4 class="font-heading fw-bold fs-5 mb-3">Jurnalistik & Dokumentasi</h4>
+                        <p class="text-muted small mb-4 flex-grow-1">Perekaman perjalanan ekspedisi, fotografi alam, penulisan laporan ilmiah perjalanan rimba, serta kampanye kesadaran lingkungan digital.</p>
+                        <span class="badge bg-light text-success border border-success-subtle align-self-start">Bidang Media & Riset</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri Foto / Dokumentasi Aksi Nyata -->
+    <section id="galeri" class="section-padding bg-soft-cream">
+        <div class="container">
+            <div class="text-center mx-auto mb-5" style="max-width: 700px;">
+                <span class="text-uppercase fw-bold small text-success" style="letter-spacing: 2px;">DOKUMENTASI LAPANGAN</span>
+                <h2 class="font-heading fw-bold display-6 mt-1 mb-3">Galeri Aksi Rimba Natbinari</h2>
+                <p class="text-muted">Potret kebersamaan, ketangguhan, dan aksi nyata anggota SMK Bina Putra Mandiri di alam bebas.</p>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1542332213-9b5a5a3fad35?auto=format&fit=crop&w=700&q=80" alt="Penanaman Pohon">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-success mb-2 align-self-start">Konservasi</span>
+                            <h5 class="fw-bold mb-1">Aksi Reboisasi Lereng Gunung</h5>
+                            <p class="small text-white-50 mb-0">Penanaman 500 bibit pohon bersama warga sekitar hutan.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=700&q=80" alt="Pendakian Gunung">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-success mb-2 align-self-start">Mountaineering</span>
+                            <h5 class="fw-bold mb-1">Ekspedisi Puncak Semeru</h5>
+                            <p class="small text-white-50 mb-0">Pelatihan mental dan uji ketahanan fisik tingkat lanjut.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=700&q=80" alt="Navigasi Darat">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-success mb-2 align-self-start">Pelatihan</span>
+                            <h5 class="fw-bold mb-1">Navigasi Darat & Kompas</h5>
+                            <p class="small text-white-50 mb-0">Praktik membaca peta kontur di hutan lindung setempat.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1510312305653-8ed496efae75?auto=format&fit=crop&w=700&q=80" alt="Susur Sungai">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-success mb-2 align-self-start">Edukasi Air</span>
+                            <h5 class="fw-bold mb-1">Ekspedisi Susur Sungai Bersih</h5>
+                            <p class="small text-white-50 mb-0">Pengujian kualitas air dan pembersihan sampah aliran sungai.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&w=700&q=80" alt="Pendidikan Dasar">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-success mb-2 align-self-start">Diksar</span>
+                            <h5 class="fw-bold mb-1">Pendidikan Dasar Angkatan Baru</h5>
+                            <p class="small text-white-50 mb-0">Pelantikan anggota muda di kaki gunung Merbabu.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1516214104703-d870798883c5?auto=format&fit=crop&w=700&q=80" alt="Bakti Sosial">
+                        <div class="gallery-overlay">
+                            <span class="badge bg-success mb-2 align-self-start">Kemanusiaan</span>
+                            <h5 class="fw-bold mb-1">Bakti Sosial & SAR Medis</h5>
+                            <p class="small text-white-50 mb-0">Penyuluhan tanggap bencana untuk masyarakat desa sekitar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Artikel / Berita Kegiatan Terbaru -->
+    <section id="berita" class="section-padding">
+        <div class="container">
+            <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-end mb-5">
+                <div>
+                    <span class="text-uppercase fw-bold small text-success" style="letter-spacing: 2px;">KABAR RIMBA</span>
+                    <h2 class="font-heading fw-bold display-6 mt-1 mb-0">Berita & Kegiatan Terbaru</h2>
+                </div>
+                <a href="#berita" class="text-success fw-bold text-decoration-none mt-2 mt-md-0">Lihat Semua Berita <i class="fas fa-angle-right ms-1"></i></a>
+            </div>
+
+            <div class="row g-4">
+                <!-- Berita 1 -->
+                <div class="col-md-4">
+                    <div class="article-card h-100">
+                        <img src="https://images.unsplash.com/photo-1542224566-6e85f2e6772f?auto=format&fit=crop&w=600&q=80" alt="Berita 1" class="img-fluid w-100" style="height: 220px; object-fit: cover;">
+                        <div class="p-4 d-flex flex-column h-auto">
+                            <div class="d-flex align-items-center gap-2 mb-2 text-muted small">
+                                <i class="far fa-calendar-alt text-success"></i> 15 Oktober 2026
+                                <span class="mx-1">•</span>
+                                <i class="far fa-user text-success"></i> Admin Natbinari
+                            </div>
+                            <h4 class="font-heading fs-5 fw-bold mb-3">Aksi Bersih Gunung dan Penanaman 300 Pohon oleh Natbinari SMK BPM</h4>
+                            <p class="text-muted small mb-4">Puluhan anggota aktif turun tangan membersihkan jalur pendakian dari sampah plastik sekaligus melakukan reboisasi kawasan hutan lindung.</p>
+                            <a href="#berita" class="text-success fw-bold text-decoration-none mt-auto small">Baca Selengkapnya <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Berita 2 -->
+                <div class="col-md-4">
+                    <div class="article-card h-100">
+                        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=600&q=80" alt="Berita 2" class="img-fluid w-100" style="height: 220px; object-fit: cover;">
+                        <div class="p-4 d-flex flex-column h-auto">
+                            <div class="d-flex align-items-center gap-2 mb-2 text-muted small">
+                                <i class="far fa-calendar-alt text-success"></i> 02 September 2026
+                                <span class="mx-1">•</span>
+                                <i class="far fa-user text-success"></i> Divisi SAR
+                            </div>
+                            <h4 class="font-heading fs-5 fw-bold mb-3">Simulasi SAR & Wilderness First Aid Angkatan XV Sukses Digelar</h4>
+                            <p class="text-muted small mb-4">Pelatihan darurat di alam bebas ini melatih kesiapan mental serta teknik evakuasi korban dalam medan ekstrem.</p>
+                            <a href="#berita" class="text-success fw-bold text-decoration-none mt-auto small">Baca Selengkapnya <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Berita 3 -->
+                <div class="col-md-4">
+                    <div class="article-card h-100">
+                        <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=600&q=80" alt="Berita 3" class="img-fluid w-100" style="height: 220px; object-fit: cover;">
+                        <div class="p-4 d-flex flex-column h-auto">
+                            <div class="d-flex align-items-center gap-2 mb-2 text-muted small">
+                                <i class="far fa-calendar-alt text-success"></i> 18 Agustus 2026
+                                <span class="mx-1">•</span>
+                                <i class="far fa-user text-success"></i> Humas SMK BPM
+                            </div>
+                            <h4 class="font-heading fs-5 fw-bold mb-3">Upacara Bendera Kemerdekaan di Puncak Bukit Rimba Nusantara</h4>
+                            <p class="text-muted small mb-4">Menumbuhkan nasionalisme dan cinta tanah air dengan melaksanakan upacara bendera merah putih di ketinggian alam terbuka.</p>
+                            <a href="#berita" class="text-success fw-bold text-decoration-none mt-auto small">Baca Selengkapnya <i class="fas fa-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulir Pendaftaran Anggota Baru -->
+    <section id="pendaftaran" class="section-padding bg-soft-cream">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="form-container p-4 p-md-5">
+                        <div class="text-center mb-4">
+                            <span class="text-uppercase fw-bold small text-success" style="letter-spacing: 2px;">REKRUTMEN ANGGOTA</span>
+                            <h2 class="font-heading fw-bold display-6 mt-1 mb-2">Formulir Pendaftaran Anggota Natbinari</h2>
+                            <p class="text-muted small">Tertantang untuk menjelajah, merawat alam, dan menjadi bagian dari keluarga besar pecinta alam SMK Bina Putra Mandiri? Daftarkan dirimu sekarang!</p>
+                        </div>
+
+                        <form id="regForm" onsubmit="handleRegistration(event)">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label for="namaLengkap" class="form-label fw-semibold small">Nama Lengkap</label>
+                                    <input type="text" class="form-control" id="namaLengkap" placeholder="Masukkan nama lengkap" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="nisn" class="form-label fw-semibold small">NISN / No. Induk Siswa</label>
+                                    <input type="text" class="form-control" id="nisn" placeholder="Contoh: 0089234112" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="kelas" class="form-label fw-semibold small">Kelas / Jurusan</label>
+                                    <select class="form-select" id="kelas" required>
+                                        <option value="" selected disabled>Pilih Kelas & Jurusan</option>
+                                        <option value="X TKJ">X - Teknik Komputer & Jaringan</option>
+                                        <option value="X TKR">X - Teknik Kendaraan Ringan</option>
+                                        <option value="X AKL">X - Akuntansi & Keuangan Lembaga</option>
+                                        <option value="XI TKJ">XI - Teknik Komputer & Jaringan</option>
+                                        <option value="XI TKR">XI - Teknik Kendaraan Ringan</option>
+                                        <option value="XI AKL">XI - Akuntansi & Keuangan Lembaga</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="whatsapp" class="form-label fw-semibold small">Nomor WhatsApp Aktif</label>
+                                    <input type="tel" class="form-control" id="whatsapp" placeholder="Contoh: 081234567890" required>
+                                </div>
+                                <div class="col-12">
+                                    <label for="divisiPilihan" class="form-label fw-semibold small">Peminatan Divisi Utama</label>
+                                    <select class="form-select" id="divisiPilihan" required>
+                                        <option value="" selected disabled>Pilih Divisi yang Diminati</option>
+                                        <option value="Konservasi & Reboisasi">Konservasi & Reboisasi</option>
+                                        <option value="Gunung Hutan (Mountaineering)">Gunung Hutan (Mountaineering)</option>
+                                        <option value="SAR & Pertolongan Pertama">SAR & Pertolongan Pertama</option>
+                                        <option value="Jurnalistik & Dokumentasi Alam">Jurnalistik & Dokumentasi Alam</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="motivasi" class="form-label fw-semibold small">Motivasi Bergabung</label>
+                                    <textarea class="form-control" id="motivasi" rows="4" placeholder="Ceritakan alasan singkat mengapa kamu ingin bergabung dengan Natbinari SMK BPM..." required></textarea>
+                                </div>
+                                <div class="col-12 text-center mt-4">
+                                    <button type="submit" class="btn btn-natbinari-primary btn-lg w-100 py-3">
+                                        <i class="fas fa-paper-plane me-2"></i> Kirim Pendaftaran Anggota
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pt-5 pb-4">
+        <div class="container">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-4">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <i class="fas fa-tree text-success fs-3" style="color: #52b788 !important;"></i>
+                        <h4 class="font-heading mb-0 text-white">NATBINARI</h4>
+                    </div>
+                    <p class="text-white-50 small mb-4">
+                        Ekstrakurikuler resmi Pecinta Alam & Kehutanan SMK Bina Putra Mandiri (SMK BPM). Wadah pembentukan generasi berjiwa kesatria rimba, peduli lingkungan, dan tangguh menghadapi tantangan alam.
+                    </p>
+                    <div class="d-flex">
+                        <a href="#" class="social-btn"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-btn"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-btn"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" class="social-btn"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <h5 class="fs-6 fw-bold mb-3 text-uppercase tracking-wider">Navigasi</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2 small">
+                        <li><a href="#beranda" class="text-white-50 text-decoration-none hover-white">Beranda</a></li>
+                        <li><a href="#tentang" class="text-white-50 text-decoration-none hover-white">Tentang Kami</a></li>
+                        <li><a href="#divisi" class="text-white-50 text-decoration-none hover-white">Program Kerja</a></li>
+                        <li><a href="#galeri" class="text-white-50 text-decoration-none hover-white">Galeri Rimba</a></li>
+                        <li><a href="#berita" class="text-white-50 text-decoration-none hover-white">Berita Kegiatan</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <h5 class="fs-6 fw-bold mb-3 text-uppercase tracking-wider">Divisi Kegiatan</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2 small text-white-50">
+                        <li>Konservasi & Reboisasi</li>
+                        <li>Gunung Hutan (Mountaineering)</li>
+                        <li>SAR & Pertolongan Pertama</li>
+                        <li>Jurnalistik & Dokumentasi Alam</li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h5 class="fs-6 fw-bold mb-3 text-uppercase tracking-wider">Sekretariat SMK BPM</h5>
+                    <p class="text-white-50 small mb-2">
+                        <i class="fas fa-map-marker-alt text-success me-2"></i> Jl. Pendidikan Raya No. 45, Komplek Kehutanan, Bogor, Jawa Barat
+                    </p>
+                    <p class="text-white-50 small mb-2">
+                        <i class="fas fa-envelope text-success me-2"></i> natbinari@smkbpm.sch.id
+                    </p>
+                    <p class="text-white-50 small mb-0">
+                        <i class="fas fa-phone-alt text-success me-2"></i> (0251) 8765432
+                    </p>
+                </div>
+            </div>
+            <hr class="border-secondary opacity-25">
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="small text-white-50 mb-0">&copy; 2026 Ekstrakurikuler Natbinari - SMK Bina Putra Mandiri. Hak Cipta Dilindungi.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end mt-3 mt-md-0">
+                    <p class="small text-white-50 mb-0">Lestari Alamku, Tangguh Negeriku 🌲</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Handle Form Submission smoothly without using alert()
+        function handleRegistration(event) {
+            event.preventDefault();
+            
+            const nama = document.getElementById('namaLengkap').value;
+            const divisi = document.getElementById('divisiPilihan').value;
+            
+            // Customize and show message box
+            const alertBox = document.getElementById('customAlert');
+            const alertText = document.getElementById('customAlertText');
+            
+            alertText.innerHTML = `Terima kasih, <strong>${nama}</strong>! Formulir pendaftaran untuk divisi <strong>${divisi}</strong> berhasil dikirim. Panitia Natbinari SMK BPM akan segera menghubungi nomor WhatsApp Anda.`;
+            
+            alertBox.style.display = 'block';
+            
+            // Reset form
+            document.getElementById('regForm').rebset();
+            
+            // Scroll smoothly to top to see notification if needed
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function closeCustomAlert() {
+            document.getElementById('customAlert').style.display = 'none';
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

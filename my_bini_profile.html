@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MY BINI - Elaina</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .card-custom {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        .card-custom:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .profile-img:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+            <div class="card card-custom text-center p-4">
+                <div class="card-body">
+                    <div class="mb-4">
+                        <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQFtefG0OofmA1GURgEFgdxxpf_3N9cUu0EKRQIr5cmtOMttMK8" 
+                             class="profile-img mx-auto d-block mb-3" 
+                             alt="Elaina"
+                             onerror="this.src='https://placehold.co/140x140/6366f1/ffffff?text=Elaina'">
+                    </div>
+                    <h3 class="card-title text-primary fw-bold mb-1">MY BINI</h3>
+                    <p class="card-text text-muted fs-5 mb-4">Elaina 🌸</p>
+                    
+                    <!-- Interactive Button -->
+                    <button class="btn btn-success btn-lg w-100 rounded-pill shadow-sm py-2 fw-semibold" id="beautifyBtn">
+                        <i class="fa-solid fa-wand-magic-sparkles me-2"></i> Percantik
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Message Modal (Replacing alert) -->
+    <div class="modal fade" id="messageModal" tabindex="-1" aria-labelledby="messageModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg rounded-4">
+                <div class="modal-header bg-success text-white rounded-top-4">
+                    <h5 class="modal-title" id="messageModalLabel"><i class="fa-solid fa-heart me-2"></i> Berhasil!</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center py-4">
+                    <p class="fs-5 text-dark mb-0" id="modalMessageText">Elaina semakin cantik dan mempesona! ✨</p>
+                </div>
+                <div class="modal-footer justify-content-center border-0 pb-4">
+                    <button type="button" class="btn btn-success rounded-pill px-4" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const beautifyBtn = document.getElementById('beautifyBtn');
+            const messageModal = new bootstrap.Modal(document.getElementById('messageModal'));
+            const modalMessageText = document.getElementById('modalMessageText');
+
+            const messages = [
+                "Elaina semakin cantik dan mempesona! ✨",
+                "Mode kecantikan aktif! Elaina terlihat luar biasa hari ini 💖",
+                "Pesona Elaina meningkat 100%! 🌹",
+                "Wah, Elaina memancarkan keanggunan yang luar biasa! 👑"
+            ];
+
+            beautifyBtn.addEventListener('click', function () {
+                // Pick a random message for fun feedback
+                const randomMsg = messages[Math.floor(Math.random() * messages.length)];
+                modalMessageText.textContent = randomMsg;
+                messageModal.show();
+            });
+        });
+    </script>
+</body>
+</html>

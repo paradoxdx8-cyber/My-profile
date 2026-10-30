@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal Ekstrakurikuler - SMK Bina Putra Mandiri (SMK BPM)</title>
+    
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* CSS Styling Utama (Mudah Dipahami untuk Presentasi) */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        /* Warna Utama Tema SMK BPM */
+        .bg-bpm-primary {
+            background-color: #1b4332 !important; /* Hijau Tua Kehutanan */
+        }
+        
+        .text-bpm-primary {
+            color: #1b4332 !important;
+        }
+
+        .btn-bpm {
+            background-color: #2d6a4f;
+            color: white;
+            border: none;
+            font-weight: 500;
+        }
+
+        .btn-bpm:hover {
+            background-color: #1b4332;
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(rgba(27, 67, 50, 0.8), rgba(27, 67, 50, 0.85)), url('https://upload.wikimedia.org/wikipedia/commons/8/85/Logo_smk_bpm.jpg?utm_source=id.wikipedia.org&utm_campaign=index&utm_content=original') center/cover no-repeat;
+            color: white;
+            padding: 100px 0;
+        }
+
+        /* Card Eskul */
+        .eskul-card {
+            border: none;
+            border-radius: 10px;
+            transition: transform 0.3s ease, shadow 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .eskul-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .eskul-icon {
+            font-size: 2.5rem;
+            color: #2d6a4f;
+        }
+
+        /* Jadwal Table */
+        .table-custom th {
+            background-color: #1b4332;
+            color: white;
+        }
+
+        /* Alert Custom Pengganti Alert() */
+        #successNotification {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1050;
+            max-width: 350px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NOTIFIKASI SUKSES (Pengganti alert()) -->
+    <div id="successNotification" class="alert alert-success alert-dismissible fade show shadow" role="alert">
+        <strong><i class="fas fa-check-circle me-2"></i>Berhasil!</strong> 
+        <span id="alertMsg">Pendaftaran berhasil dikirim.</span>
+        <button type="button" class="btn-close" onclick="closeAlert()" aria-label="Close"></button>
+    </div>
+
+    <!-- 1. NAVBAR / MENU NAVIGASI -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-bpm-primary sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">
+                <i class="fas fa-graduation-cap me-2"></i> SMK BINA PUTRA MANDIRI
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav gap-3">
+                    <li class="nav-item"><a class="nav-link active" href="#beranda">Beranda</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#eskul">Daftar Eskul</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#jadwal">Jadwal</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pendaftaran">Pendaftaran</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. HERO SECTION / BANNER UTAMA -->
+    <header id="beranda" class="hero-section text-center">
+        <div class="container">
+            <span class="badge bg-success mb-3 px-3 py-2 rounded-pill">Portal Resmi Kesiswaan</span>
+            <h1 class="display-5 fw-bold mb-3">Direktori Ekstrakurikuler SMK BPM</h1>
+            <p class="lead mx-auto mb-4" style="max-width: 700px;">
+                Temukan bakat, kembangkan potensi, dan bentuk karakter unggul melalui ragam pilihan kegiatan ekstrakurikuler di SMK Bina Putra Mandiri.
+            </p>
+            <a href="#eskul" class="btn btn-light btn-lg px-4 fw-semibold text-bpm-primary shadow">Jelajahi Ekstrakurikuler</a>
+        </div>
+    </header>
+
+    <!-- 3. DAFTAR SEMUA EKSTRAKURIKULER (GRID CARD) -->
+    <section id="eskul" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-bpm-primary">Pilihan Ekstrakurikuler</h2>
+                <p class="text-muted">Ragam wadah pengembangan minat dan bakat siswa-siswi SMK Bina Putra Mandiri.</p>
+            </div>
+
+            <div class="row g-4">
+                
+                <!-- Eskul 1: Natbinari -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card eskul-card h-150 p-4 bg-white">
+                        <div class="eskul-icon mb-3"><i class="fas fa-tree"></i></div>
+                        <h4 class="fw-bold h5">Natbinari (Pecinta Alam)</h4>
+                        <p class="text-muted small">Fokus pada pelestarian alam, kehutanan, navigasi darat, reboisasi, dan petualangan rimba.</p>
+                        <span class="badge bg-success bg-opacity-10 text-success align-self-start">Wajib / Outdoor</span>
+                    </div>
+                </div>
+
+                <!-- Eskul 2: Pramuka -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card eskul-card h-150 p-4 bg-white">
+                        <div class="eskul-icon mb-3"><i class="fas fa-campground"></i></div>
+                        <h4 class="fw-bold h5">Pramuka Ambalan</h4>
+                        <p class="text-muted small">Membentuk kedisiplinan, kepemimpinan, keterampilan kepramukaan, dan jiwa sosial yang tinggi.</p>
+                        <span class="badge bg-success bg-opacity-10 text-success align-self-start">Wajib Nasional</span>
+                    </div>
+                </div>
+
+                <!-- Eskul 3: Paskibra -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card eskul-card h-150 p-4 bg-white">
+                        <div class="eskul-icon mb-3"><i class="fas fa-flag"></i></div>
+                        <h4 class="fw-bold h5">Paskibra (Pasukan Pengibar Bendera)</h4>
+                        <p class="text-muted small">Melatih peraturan baris-berbaris (PBB), ketegasan mental, dan petugas upacara resmi sekolah.</p>
+                        <span class="badge bg-success bg-opacity-10 text-success align-self-start">Kedisiplinan</span>
+                    </div>
+                </div>
+
+                <!-- Eskul 4: PMR -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card eskul-card h-150 p-4 bg-white">
+                        <div class="eskul-icon mb-3"><i class="fas fa-hand-holding-medical"></i></div>
+                        <h4 class="fw-bold h5">PMR (Palang Merah Remaja)</h4>
+                        <p class="text-muted small">Mempelajari teknik pertolongan pertama, siaga bencana, kesehatan remaja, dan aksi kemanusiaan.</p>
+                        <span class="badge bg-success bg-opacity-10 text-success align-self-start">Kemanusiaan</span>
+                    </div>
+                </div>
+
+                <!-- Eskul 5: Rohis / Rohkrif -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card eskul-card h-150 p-4 bg-white">
+                        <div class="eskul-icon mb-3"><i class="fas fa-mosque"></i></div>
+                        <h4 class="fw-bold h5">Rohis & Keagamaan</h4>
+                        <p class="text-muted small">Pembinaan kerohanian Islam, kajian keislaman, tadarus Al-Quran, dan pembentukan akhlak mulia.</p>
+                        <span class="badge bg-success bg-opacity-10 text-success align-self-start">Kerohanian</span>
+                    </div>
+                </div>
+
+                <!-- Eskul 6: Olahraga (Basket & Futsal) -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card eskul-card h-150 p-4 bg-white">
+                        <div class="eskul-icon mb-3"><i class="fas fa-basketball-ball"></i></div>
+                        <h4 class="fw-bold h5">Klub Olahraga (Futsal & Basket)</h4>
+                        <p class="text-muted small">Menyalurkan bakat atletik, kerja sama tim, strategi olahraga, dan persiapan kompetisi antar sekolah.</p>
+                        <span class="badge bg-success bg-opacity-10 text-success align-self-start">Olahraga & Prestasi</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. JADWAL LATIHAN (TABEL) -->
+    <section id="jadwal" class="py-5 bg-light">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2 class="fw-bold text-bpm-primary">Jadwal Kegiatan Ekstrakurikuler</h2>
+                <p class="text-muted">Waktu rutin pelaksanaan latihan setiap minggunya.</p>
+            </div>
+            
+            <div class="table-responsive bg-white rounded-3 shadow-sm p-3">
+                <table class="table table-hover align-middle table-custom">
+                    <thead>
+                        <tr>
+                            <th>Hari</th>
+                            <th>Waktu</th>
+                            <th>Nama Ekstrakurikuler</th>
+                            <th>Lokasi / Lapangan</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Senin</strong></td>
+                            <td>15:30 - 17:30 WIB</td>
+                            <td>Paskibra</td>
+                            <td>Lapangan Utama SMK BPM</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Selasa</strong></td>
+                            <td>15:30 - 17:30 WIB</td>
+                            <td>Natbinari (Pecinta Alam)</td>
+                            <td>Ruang Teori 1 & Hutan Kampus</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Rabu</strong></td>
+                            <td>15:30 - 17:30 WIB</td>
+                            <td>PMR (Palang Merah Remaja)</td>
+                            <td>Ruang UKS / Aula</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kamis</strong></td>
+                            <td>15:30 - 17:30 WIB</td>
+                            <td>Klub Olahraga (Futsal / Basket)</td>
+                            <td>Lapangan Olahraga SMK BPM</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Jumat</strong></td>
+                            <td>13:30 - 15:00 WIB</td>
+                            <td>Rohis & Keagamaan</td>
+                            <td>Masjid Nurul Huda SMK BPM</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sabtu</strong></td>
+                            <td>14:00 - 17:00 WIB</td>
+                            <td>Pramuka Ambalan</td>
+                            <td>Halaman Depan & Aula Sekolah</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. FORMULIR PENDAFTARAN ONLINE -->
+    <section id="pendaftaran" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="card border-0 shadow-sm p-4 p-md-5 rounded-4">
+                        <div class="text-center mb-4">
+                            <h3 class="fw-bold text-bpm-primary">Formulir Pendaftaran Ekstrakurikuler</h3>
+                            <p class="text-muted small">Pilih eskul impianmu dan daftarkan dirimu segera secara online.</p>
+                        </div>
+
+                        <!-- Form dengan fungsi submit JS -->
+                        <form id="regForm" onsubmit="submitRegistration(event)">
+                            <div class="mb-3">
+                                <label for="nama" class="form-label fw-semibold small">Nama Lengkap Siswa</label>
+                                <input type="text" class="form-control" id="nama" placeholder="Contoh: Ahmad Rizki" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="kelas" class="form-label fw-semibold small">Kelas / Jurusan</label>
+                                <input type="text" class="form-control" id="kelas" placeholder="Contoh: X - Teknik Komputer Jaringan" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="pilihanEskul" class="form-label fw-semibold small">Pilih Ekstrakurikuler</label>
+                                <select class="form-select" id="pilihanEskul" required>
+                                    <option value="" selected disabled>-- Pilih Salah Satu --</option>
+                                    <option value="Natbinari (Pecinta Alam & Kehutanan)">Natbinari (Pecinta Alam & Kehutanan)</option>
+                                    <option value="Pramuka Ambalan">Pramuka Ambalan</option>
+                                    <option value="Paskibra">Paskibra</option>
+                                    <option value="PMR">PMR (Palang Merah Remaja)</option>
+                                    <option value="Rohis">Rohis & Keagamaan</option>
+                                    <option value="Olahraga (Futsal/Basket)">Olahraga (Futsal / Basket)</option>
+                                </select>
+                            </div>
+                            <div class="mb-4">
+                                <label for="alasan" class="form-label fw-semibold small">Alasan Mengikuti Eskul</label>
+                                <textarea class="form-control" id="alasan" rows="3" placeholder="Tuliskan alasan singkatmu..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-bpm w-100 py-3 fw-semibold">
+                                <i class="fas fa-paper-plane me-2"></i> Kirim Pendaftaran
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. FOOTER -->
+    <footer class="bg-bpm-primary text-white py-4">
+        <div class="container text-center">
+            <p class="mb-1 fw-bold">SMK BINA PUTRA MANDIRI (SMK BPM)</p>
+            <p class="small text-white-50 mb-0">&copy; 2026 Portal Ekstrakurikuler Siswa. Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        /* Fungsi JavaScript Sederhana untuk Menampilkan Notifikasi Sukses */
+        function submitRegistration(event) {
+            event.preventDefault(); // Mencegah halaman reload otomatis
+            
+            const namaSiswa = document.getElementById('nama').value;
+            const eskulPilihan = document.getElementById('pilihanEskul').value;
+            
+            // Set teks pesan sukses
+            document.getElementById('alertMsg').innerHTML = `Selamat <strong>${namaSiswa}</strong>, pendaftaran ke eskul <strong>${eskulPilihan}</strong> berhasil disimpan!`;
+            
+            // Tampilkan kotak notifikasi
+            const alertBox = document.getElementById('successNotification');
+            alertBox.style.display = 'block';
+            
+            // Reset formulir setelah dikirim
+            document.getElementById('regForm').reset();
+            
+            // Auto scroll ke atas agar notifikasi terlihat
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        /* Fungsi Menutup Notifikasi */
+        function closeAlert() {
+            document.getElementById('successNotification').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
+```
+eof
+
+### Poin-Poin Penting untuk Presentasimu:
+1. **Struktur Kode Sederhana**: Menggunakan satu file HTML lengkap dengan CDN Bootstrap 5 sehingga mudah dijalankan langsung di browser atau dipresentasikan tanpa instalasi tambahan.
+2. **Kelengkapan Ekstrakurikuler**: Mencakup **Natbinari** (Pecinta Alam & Kehutanan), **Pramuka**, **Paskibra**, **PMR**, **Rohis**, dan **Olahraga (Futsal/Basket)** dalam bentuk *Card Grid* yang rapi.
+3. **Fitur Lengkap**: Memiliki Navbar responsif, Banner Utama (Hero), Tabel Jadwal Latihan mingguan, dan Form Pendaftaran dengan feedback interaktif tanpa `alert()`.

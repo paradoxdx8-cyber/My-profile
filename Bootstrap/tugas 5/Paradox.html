@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paradox - Modern Portfolio</title>
+    <!-- Bootstrap 5 CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #111827;
+            --accent-glow: rgba(139, 92, 246, 0.15);
+            --border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: #e5e7eb;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3, .anna {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Glassmorphism Navbar */
+        .navbar {
+            background: rgba(11, 15, 25, 0.85) !important;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            background: linear-gradient(135deg, #a78bfa 0%, #ec4899 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: #9ca3af !important;
+            transition: color 0.2s ease;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #f3f4f6 !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background: linear-gradient(90deg, #8b5cf6, #ec4899);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Jumbotron Hero Section */
+        .jumbotron-hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at 50% 30%, rgba(139, 92, 246, 0.12) 0%, transparent 60%);
+        }
+
+        /* About Section */
+        .about-section {
+            background: linear-gradient(180deg, var(--bg-color) 0%, #0f172a 100%);
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .about-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .about-card:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+        }
+
+        /* Service & Tech Cards */
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #8b5cf6, #ec4899);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(139, 92, 246, 0.4);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px var(--accent-glow);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .icon-box {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1rem;
+            background: rgba(139, 92, 246, 0.1);
+            color: #a78bfa;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .icon-box {
+            background: linear-gradient(135deg, #8b5cf6, #ec4899);
+            color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background: #080c14;
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top py-3">
+        <div class="container">
+            <a class="navbar-brand fs-4 anna" href="#">Paradox</a>
+            <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ms-auto gap-lg-3 text-center py-3 py-lg-0">
+                    <a class="nav-link" href="#about">About</a>
+                    <a class="nav-link" href="#service">Service</a>
+                    <a class="nav-link" href="#teknologi">Technology</a>
+                    <a class="nav-link" href="#client">Client</a>
+                    <a class="nav-link" href="#contact">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Jumbotron / Hero Section -->
+    <section id="jumbotron" class="jumbotron-hero text-white text-center pt-5">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-8" style="z-index: 1;">
+                    <span class="badge rounded-pill bg-purple px-3 py-2 mb-3 text-uppercase fw-semibold" style="background: rgba(139, 92, 246, 0.15); color: #c4b5fd; border: 1px solid rgba(139, 92, 246, 0.3);">Creative Portfolio</span>
+                    <h1 class="display-3 fw-bold mb-4 anna">
+                        <span style="color: #bf00bf">P</span><span style="color: #fd3050">a</span><span style="color: #dc9b05">r</span><span style="color: #75f216">a</span><span style="color: #16f275">d</span><span style="color: #059bdc">o</span><span style="color: #5030fd">x</span>
+                    </h1>
+                    <p class="lead circus text-muted mb-5 mx-auto" style="max-width: 650px; font-size: 1.15rem; line-height: 1.8;">
+                        Paradoks adalah pernyataan atau situasi yang seolah-olah bertentangan dengan pendapat umum atau logika, tetapi kenyataannya mengandung kebenaran mendalam.
+                    </p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="#about" class="btn btn-light px-4 py-3 rounded-pill fw-semibold shadow-sm">Explore More</a>
+                        <a href="#contact" class="btn btn-outline-light px-4 py-3 rounded-pill fw-semibold">Get in Touch</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section py-5">
+        <div class="container py-5">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="about-card p-4 p-md-5">
+                        <h2 class="fw-bold mb-4 anna text-gradient" style="background: linear-gradient(135deg, #f3f4f6 0%, #9ca3af 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">About Us</h2>
+                        <p class="text-muted mb-4" style="line-height: 1.8;">
+                            <strong>Pengertian Dasar:</strong><br>
+                            • <em>Menurut KBBI:</em> Pernyataan yang tampak berlawanan dengan kebenaran umum, namun nyatanya benar.<br>
+                            • <em>Asal Kata:</em> Berasal dari bahasa Yunani <em>paradoxon</em>, gabungan dari <em>para</em> (bertentangan) dan <em>doxa</em> (opini/pendapat).<br>
+                            • <em>Dalam Sastra:</em> Digunakan sebagai majas atau gaya bahasa pertentangan untuk menyampaikan makna mendalam.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-card p-4 p-md-5">
+                        <h3 class="h4 fw-bold mb-3 text-white anna">Contoh Paradoks</h3>
+                        <ul class="list-unstyled text-muted d-flex flex-column gap-3 mb-0" style="line-height: 1.7;">
+                            <li><strong class="text-white">• Kehidupan Sehari-hari:</strong> "Makin banyak yang kamu tahu, makin kamu menyadari bahwa kamu tidak tahu apa-apa."</li>
+                            <li><strong class="text-white">• Sastra / Lagu:</strong> Lirik lagu seperti "Jakarta ramai, hatiku sepi" menggambarkan keterasingan di tengah keramaian metropolitan.</li>
+                            <li><strong class="text-white">• Logika / Filsafat:</strong> Paradoks Pembohong — Seseorang berkata, <em>"Kalimat yang sedang saya ucapkan ini adalah sebuah kebohongan"</em>.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Section -->
+    <section id="service" class="py-5 bg-dark">
+        <div class="container py-5">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <span class="text-uppercase text-purple fw-semibold tracking-wide fs-6" style="color: #a78bfa;">Our Expertise</span>
+                    <h2 class="fw-bold display-5 mt-2 mb-3 anna">Service</h2>
+                    <p class="text-muted">Kami menyediakan solusi inovatif kelas dunia yang memadukan estetika visual mutakhir dengan logika fungsional yang tangguh.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card p-4 h-100">
+                        <div class="icon-box">
+                            <i class="bi bi-window-stack"></i>
+                        </div>
+                        <h4 class="h5 fw-bold mb-3 text-white">Web Architecture</h4>
+                        <p class="text-muted mb-0">Membangun struktur web yang responsif, cepat, aman, dan dioptimalkan untuk pengalaman pengguna lintas perangkat.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card p-4 h-100">
+                        <div class="icon-box">
+                            <i class="bi bi-palette"></i>
+                        </div>
+                        <h4 class="h5 fw-bold mb-3 text-white">Creative Design</h4>
+                        <p class="text-muted mb-0">Merancang antarmuka pengguna interaktif dengan estetika modern, warna bergradasi, dan tipografi yang elegan.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card p-4 h-100">
+                        <div class="icon-box">
+                            <i class="bi bi-shield-check"></i>
+                        </div>
+                        <h4 class="h5 fw-bold mb-3 text-white">Brand Strategy</h4>
+                        <p class="text-muted mb-0">Mengembangkan identitas merek yang kuat dan berdaya saing tinggi di era digital yang dinamis.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Cards Section -->
+    <section id="teknologi" class="py-5" style="background: #090d16;">
+        <div class="container py-5">
+            <div class="row text-center mb-5">
+                <div class="col-lg-8 mx-auto">
+                    <span class="text-uppercase fw-semibold tracking-wide fs-6" style="color: #a78bfa;">Tech Stack</span>
+                    <h2 class="fw-bold display-5 mt-2 mb-3 anna">Core Competencies</h2>
+                    <p class="text-muted">Pondasi teknologi dan pilar keahlian yang kami gunakan dalam setiap proyek kreatif.</p>
+                </div>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="feature-card p-4 text-center h-100">
+                        <div class="icon-box mx-auto">
+                            <i class="bi bi-code-slash"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2 text-white">Code & Logic</h5>
+                        <p class="text-muted small mb-0">Implementasi kode bersih menggunakan standar modern HTML5, CSS3, JavaScript, dan Bootstrap.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card p-4 text-center h-100">
+                        <div class="icon-box mx-auto">
+                            <i class="bi bi-book-half"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2 text-white">UI/UX Design</h5>
+                        <p class="text-muted small mb-0">Riset mendalam, wireframing, dan pembuatan prototipe interaktif yang berpusat pada kenyamanan pengguna.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card p-4 text-center h-100">
+                        <div class="icon-box mx-auto">
+                            <i class="bi bi-display"></i>
+                        </div>
+                        <h5 class="fw-bold mb-2 text-white">Digital Branding</h5>
+                        <p class="text-muted small mb-0">Strategi visual komprehensif untuk meningkatkan eksposur merek dan keterlibatan audiens target.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Client & Testimonials Section -->
+    <section id="client" class="py-5 bg-dark">
+        <div class="container py-5 text-center">
+            <span class="text-uppercase fw-semibold tracking-wide fs-6" style="color: #a78bfa;">Partners</span>
+            <h2 class="fw-bold display-5 mt-2 mb-5 anna">Trusted By Innovators</h2>
+            <div class="row justify-content-center align-items-center g-4 opacity-75">
+                <div class="col-6 col-md-3">
+                    <div class="p-3 border border-secondary border-opacity-25 rounded-3 bg-opacity-10 bg-white">
+                        <h5 class="mb-0 text-white fw-semibold">NexusLab</h5>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="p-3 border border-secondary border-opacity-25 rounded-3 bg-opacity-10 bg-white">
+                        <h5 class="mb-0 text-white fw-semibold">Vortex AI</h5>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="p-3 border border-secondary border-opacity-25 rounded-3 bg-opacity-10 bg-white">
+                        <h5 class="mb-0 text-white fw-semibold">Aether Studio</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Footer Section -->
+    <footer id="contact" class="py-5 text-white">
+        <div class="container py-4">
+            <div class="row g-4 mb-5">
+                <div class="col-lg-5">
+                    <h3 class="anna fs-3 mb-3">Paradox Portfolio</h3>
+                    <p class="text-muted mb-4" style="max-width: 350px;">Menghadirkan harmoni antara logika filosofis dan keindahan visual digital.</p>
+                    <div class="d-flex gap-3 fs-5">
+                        <a href="#" class="text-muted hover-light"><i class="bi bi-github"></i></a>
+                        <a href="#" class="text-muted hover-light"><i class="bi bi-linkedin"></i></a>
+                        <a href="#" class="text-muted hover-light"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-muted hover-light"><i class="bi bi-twitter-x"></i></a>
+                    </div>
+                </div>
+                <div class="col-6 col-lg-3">
+                    <h5 class="fw-bold mb-3 text-white fs-6">Quick Links</h5>
+                    <ul class="list-unstyled d-flex flex-column gap-2">
+                        <li><a href="#about" class="text-muted text-decoration-none">About Us</a></li>
+                        <li><a href="#service" class="text-muted text-decoration-none">Services</a></li>
+                        <li><a href="#teknologi" class="text-muted text-decoration-none">Technology</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-4">
+                    <h5 class="fw-bold mb-3 text-white fs-6">Contact Info</h5>
+                    <p class="text-muted mb-1"><i class="bi bi-envelope me-2"></i> hello@paradox-studio.io</p>
+                    <p class="text-muted mb-0"><i class="bi bi-geo-alt me-2"></i> Jakarta, Indonesia</p>
+                </div>
+            </div>
+            <hr class="border-secondary border-opacity-25">
+            <div class="row pt-3">
+                <div class="col text-center text-muted small">
+                    &copy; 2026 Paradox Portfolio. All rights reserved. Crafted with precision & style.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

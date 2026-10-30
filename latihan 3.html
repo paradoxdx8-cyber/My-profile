@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabel Versi Microsoft Word</title>
+  <style>
+    /* Desain kontainer agar menyerupai halaman kertas Word (A4) */
+    body {
+      background-color: #f4f4f4;
+      font-family: "Calibri", "Arial", sans-serif;
+      padding: 40px;
+    }
+
+    .halaman-word {
+      background-color: #ffffff;
+      width: 85%;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 50px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Gaya Tabel persis bawaan Microsoft Word (Table Grid Style) */
+    .table-word {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11pt; /* Ukuran standar teks di Word */
+      color: #000000;
+      line-height: 1.2;
+    }
+
+    /* Border tipis 0.5pt khas Word (warna abu-abu gelap #7F7F7F) */
+    .table-word th, 
+    .table-word td {
+      border: 1px solid #7f7f7f;
+      padding: 6px 8px; /* Padding standar cell margins di Word */
+      vertical-align: middle;
+    }
+
+    /* Desain KEPALA TABEL (<thead>) - Abu-abu Formal Word */
+    .table-word thead tr {
+      background-color: #f2f2f2; /* Shading abu-abu 15% - 20% */
+    }
+    
+    .table-word th {
+      font-weight: bold;
+      text-align: center;
+    }
+
+    /* Desain KAKI TABEL (<tfoot>) - Baris Total Dokumen */
+    .table-word tfoot tr {
+      background-color: #f2f2f2;
+      font-weight: bold;
+    }
+
+    /* Karakteristik alignment Word */
+    .text-center { text-align: center; }
+    .text-right { text-align: right; }
+    .text-left { text-align: left; }
+    
+    .bg-blank { background-color: #e6e6e6; }
+  </style>
+</head>
+<body>
+
+  <!-- Simulasi lembar kerja Word -->
+  <div class="halaman-word">
+    
+    <h2 style="font-size: 16pt; margin-top: 0; margin-bottom: 5px; color: #1f4e78;">LAPORAN KINERJA DAN KEUANGAN UTAMA</h2>
+    <p style="font-size: 11pt; color: #595959; margin-bottom: 20px;">Format Dokumen Ritel Internal — Tahun Anggaran 2026</p>
+
+    <!-- Mulai Tabel -->
+    <table class="table-word">
+      <thead>
+        <tr>
+          <th rowspan="3" style="width: 15%;">Wilayah</th>
+          <th rowspan="3" style="width: 15%;">Cabang</th>
+          <th rowspan="3" style="width: 20%;">Supervisor</th>
+          <th colspan="5">Data Operasional Ritel</th>
+        </tr>
+        <tr>
+          <th colspan="2">Pendapatan</th>
+          <th colspan="2">Pengeluaran</th>
+          <th rowspan="2" style="width: 12%;">Efisiensi</th>
+        </tr>
+        <tr>
+          <th style="width: 13%;">Target</th>
+          <th style="width: 13%;">Realisasi</th>
+          <th style="width: 13%;">Operasional</th>
+          <th style="width: 13%;">Logistik</th>
+        </tr>
+      </thead>
+      
+      <tbody>
+        <!-- Wilayah Barat -->
+        <tr>
+          <td rowspan="3" class="text-center"><strong>Barat</strong></td>
+          <td>Cabang A1</td>
+          <td>Budi Santoso</td>
+          <td class="text-right">Rp50.000.000</td>
+          <td class="text-right">Rp55.000.000</td>
+          <td class="text-right">Rp10.000.000</td>
+          <td class="text-right">Rp5.000.000</td>
+          <td class="text-center">92%</td>
+        </tr>
+        <tr>
+          <td>Cabang A2</td>
+          <td>Siti Aminah</td>
+          <td class="text-right">Rp45.000.000</td>
+          <td class="text-right">Rp42.000.000</td>
+          <td class="text-right">Rp8.000.000</td>
+          <td class="text-right">Rp4.000.000</td>
+          <td class="text-center">88%</td>
+        </tr>
+        <tr>
+          <td>Cabang A3</td>
+          <td>Ahmad Rian</td>
+          <td class="text-right">Rp60.000.000</td>
+          <td class="text-right">Rp63.000.000</td>
+          <td class="text-right">Rp12.000.000</td>
+          <td class="text-right">Rp6.000.000</td>
+          <td class="text-center">95%</td>
+        </tr>
+        
+        <!-- Wilayah Timur -->
+        <tr>
+          <td rowspan="2" class="text-center"><strong>Timur</strong></td>
+          <td>Cabang B1</td>
+          <td>Dewi Lestari</td>
+          <td class="text-right">Rp40.000.000</td>
+          <td class="text-right">Rp38.000.000</td>
+          <td class="text-right">Rp7.500.000</td>
+          <td class="text-right">Rp3.500.000</td>
+          <td class="text-center">85%</td>
+        </tr>
+        <tr>
+          <td>Cabang B2</td>
+          <td>Eko Prasetyo</td>
+          <td class="text-right">Rp55.000.000</td>
+          <td class="text-right">Rp58.000.000</td>
+          <td class="text-right">Rp11.000.000</td>
+          <td class="text-right">Rp5.500.000</td>
+          <td class="text-center">91%</td>
+        </tr>
+      </tbody>
+      
+      <tfoot>
+        <tr>
+          <td colspan="3" class="text-center">Total Keseluruhan</td>
+          <td class="text-right">Rp250.000.000</td>
+          <td class="text-right">Rp256.000.000</td>
+          <td class="text-right">Rp48.500.000</td>
+          <td class="text-right">Rp24.000.000</td>
+          <td rowspan="2" class="text-center">90,2%<br><span style="font-size: 9pt; font-weight: normal;">(Rata-rata)</span></td>
+        </tr>
+        <tr>
+          <td colspan="3" class="text-center">Total Pengeluaran Gabungan</td>
+          <td colspan="2" class="bg-blank"></td>
+          <td colspan="2" class="text-center">Rp72.500.000</td>
+        </tr>
+      </tfoot>
+    </table>
+
+  </div>
+
+</body>
+</html>

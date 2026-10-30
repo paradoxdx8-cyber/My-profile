@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <!-- Menggunakan versi Bootstrap CDN yang stabil -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Style untuk foto profil di atas Jumbotron */
+        .profile-img-jumbotron {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+        .profile-img-jumbotron:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand anna" href="#">My Portfolio</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav ms-auto">
+            <a class="nav-link" href="#about">About</a>
+            <a class="nav-link" href="#service">Service</a>
+            <a class="nav-link" href="#client">Client</a>
+            <a class="nav-link" href="#testimonial">Testimonial</a>
+            <a class="nav-link" href="#contact">Contact</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Jumbotron (Dengan Foto Profil di Atas Tulisan Paradox) -->
+    <section id="jumbotron" class="jumbotron">
+        <div class="row-img d-flex justify-content-center align-items-center text-white text-center">
+          <div class="col-md-6 col-10" style="z-index: 1;">
+            <!-- Foto Profil Elaina -->
+            <div class="mb-4">
+                <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQFtefG0OofmA1GURgEFgdxxpf_3N9cUu0EKRQIr5cmtOMttMK8" 
+                     class="profile-img-jumbotron mx-auto d-block" 
+                     alt="Elaina"
+                     onerror="this.src='https://placehold.co/140x140/6366f1/ffffff?text=Elaina'">
+            </div>
+            <h2 class="display-4 anna">
+                <span style="color: #bf00bf">P</span><span style="color: #fd3050">a</span><span style="color: #dc9b05">r</span><span style="color: #75f216">a</span><span style="color: #16f275">d</span><span style="color: #059bdc">o</span><span style="color: #5030fd">x</span>
+            </h2>
+            <p class="lead circus">Paradoks adalah pernyataan atau situasi yang seolah-olah bertentangan dengan pendapat umum atau logika, tetapi kenyataannya mengandung kebenaran</p>
+          </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="about">
+      <div class="row-img d-flex">
+        <div class="md5 p-2 d-flex justify-content-center align-items-start text-white flex-column">
+          <h2 class="fw-bold mb-3">About US</h2>
+          <p>Pengertian Dasar<br>
+          • Menurut KBBI: Pernyataan yang tampak berlawanan dengan kebenaran umum, namun nyatanya benar.<br>
+          • Asal Kata: Berasal dari bahasa Yunani paradoxon, gabungan dari para (bertentangan) dan doxa (opini/pendapat).<br>
+          • Dalam Sastra: Digunakan sebagai majas atau gaya bahasa pertentangan untuk menyampaikan makna mendalam.<br><br>
+          Contoh Paradoks<br>
+          • Dalam Kehidupan Sehari-hari: "Makin banyak yang kamu tahu, makin kamu menyadari bahwa kamu tidak tahu apa-apa."<br>
+          • Dalam Sastra/Lagu: Lirik "Jakarta ramai, hatiku sepi" (menggambarkan perasaan terasing di tengah keramaian kota).<br>
+          • Dalam Logika/Filsafat: Paradoks Pembohong — Seseorang berkata, "Kalimat yang sedang saya ucapkan ini adalah sebuah kebohongan". Jika itu benar, maka ia sedang berbohong; jika itu bohong, maka kalimat itu benar.</p>
+        </div>
+        <div class="md5"></div>
+      </div>
+    </section>
+
+    <!-- Service -->
+    <section id="service" class="service pt-5">
+      <div class="container">
+        <div class="row text-white text-center">
+          <div class="col-12">
+            <h2 class="fw-bold">Service</h2>
+            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, cum placeat quo eveniet ullam alias aperiam voluptas harum aut enim consequatur! Fugiat eos, similique suscipit rerum unde perspiciatis fugit accusamus, hic voluptatum ab ea, doloribus magnam velit eveniet quas? Neque architecto laborum alias amet! Ad?</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Technology -->
+    <section id="teknologi" class="teknologi py-5">
+     <div class="container">
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card bg-dark text-white border-secondary h-100">
+            <div class="card-body text-center">
+              <i class="bi bi-code fs-1 text-info"></i>
+              <h5 class="mt-3">Code</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card bg-dark text-white border-secondary h-100">
+            <div class="card-body text-center">
+              <i class="bi bi-book fs-1 text-warning"></i>
+              <h5 class="mt-3">Design</h5>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card bg-dark text-white border-secondary h-100">
+            <div class="card-body text-center">
+              <i class="bi bi-display-fill fs-1 text-success"></i>
+              <h5 class="mt-3">Branding</h5>
+            </div>
+          </div>
+        </div>
+      </div>
+     </div>
+    </section>
+
+    <!-- Client -->
+    <section id="client" class="client py-5 bg-black">
+      <div class="container">
+        <div class="row text-center mb-4">
+          <div class="col-12 text-white">
+            <h2 class="fw-bold">Client</h2>
+            <p class="text-muted">Klien dan mitra yang pernah bekerja sama.</p>
+          </div>
+        </div>
+        <div class="row text-center text-secondary fw-bold g-4">
+          <div class="col-md-3 col-6"><h4>TECH CORP</h4></div>
+          <div class="col-md-3 col-6"><h4>STUDIO X</h4></div>
+          <div class="col-md-3 col-6"><h4>INNOVATE ID</h4></div>
+          <div class="col-md-3 col-6"><h4>PARADOX LAB</h4></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section id="testimonial" class="testimonial py-5">
+      <div class="container">
+        <div class="row text-center mb-4 text-white">
+          <div class="col-12">
+            <h2 class="fw-bold">Testimonial</h2>
+            <p class="text-muted">Apa kata mereka tentang layanan kami.</p>
+          </div>
+        </div>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card bg-dark text-white border-secondary p-3 h-100">
+              <div class="card-body">
+                <p class="fst-italic">"Pekerjaan sangat rapi, komunikasi cepat, dan hasilnya luar biasa memuaskan!"</p>
+                <h6 class="fw-bold mt-3 text-info">— Andi Pratama</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-dark text-white border-secondary p-3 h-100">
+              <div class="card-body">
+                <p class="fst-italic">"Konsep desainnya sangat berkesan dan sesuai dengan filosofi paradoks yang diusung."</p>
+                <h6 class="fw-bold mt-3 text-warning">— Siska Lestari</h6>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card bg-dark text-white border-secondary p-3 h-100">
+              <div class="card-body">
+                <p class="fst-italic">"Sangat direkomendasikan untuk Anda yang ingin membuat portofolio maupun web profesional."</p>
+                <h6 class="fw-bold mt-3 text-success">— Budi Santoso</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact py-5 bg-black">
+      <div class="container">
+        <div class="row text-center mb-4 text-white">
+          <div class="col-12">
+            <h2 class="fw-bold">Contact</h2>
+            <p class="text-muted">Hubungi kami untuk kolaborasi atau pertanyaan.</p>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <form>
+              <div class="mb-3">
+                <label for="name" class="form-label text-white">Nama Lengkap</label>
+                <input type="text" class="form-control bg-dark text-white border-secondary" id="name" placeholder="Masukkan nama Anda">
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label text-white">Email</label>
+                <input type="email" class="form-control bg-dark text-white border-secondary" id="email" placeholder="nama@email.com">
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label text-white">Pesan</label>
+                <textarea class="form-control bg-dark text-white border-secondary" id="message" rows="4" placeholder="Tuliskan pesan Anda..."></textarea>
+              </div>
+              <button type="submit" class="btn btn-outline-light w-100">Kirim Pesan</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center text-muted bg-dark border-top border-secondary">
+      <p class="mb-0">&copy; 2026 My Portfolio. All Rights Reserved.</p>
+    </footer>
+
+    <!-- Script Bootstrap Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

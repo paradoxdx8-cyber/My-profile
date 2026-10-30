@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Penjualan</title>
+
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 700px;
+            margin: 30px auto;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .judul {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .header {
+            background-color: orange;
+        }
+
+        .grand-total {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table>
+
+        <tr>
+            <th colspan="5" class="judul">INVOICE PENJUALAN</th>
+        </tr>
+
+      
+        <tr>
+            <th class="header">No</th>
+            <th class="header">Nama Barang</th>
+            <th class="header">QTY</th>
+            <th class="header">Harga</th>
+            <th class="header">Total</th>
+        </tr>
+
+        <tr>
+            <td>1</td>
+            <td>Baju</td>
+            <td>1</td>
+            <td>Rp120.000</td>
+            <td>Rp120.000</td>
+        </tr>
+
+        <tr>
+            <td>2</td>
+            <td>Celana</td>
+            <td>2</td>
+            <td>Rp75.000</td>
+            <td>Rp150.000</td>
+        </tr>
+
+        <tr>
+            <td>3</td>
+            <td>Tas</td>
+            <td>1</td>
+            <td>Rp250.000</td>
+            <td>Rp250.000</td>
+        </tr>
+
+        <tr class="grand-total">
+            <td colspan="4">GRAND TOTAL</td>
+            <td>Rp520.000</td>
+        </tr>
+
+    </table>
+
+</body>
+</html>

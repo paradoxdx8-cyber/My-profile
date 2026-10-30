@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Tabel Laporan Berwarna</title>
+  <style>
+    /* Pengaturan dasar tabel */
+    .custom-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      font-size: 14px;
+      color: #333333;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      border: 1px solid #dcdcdc;
+    }
+
+    /* Gaya untuk KEPALA TABEL (<thead>) */
+    .custom-table thead {
+      background-color: #1e3d59; /* Warna Biru Tua Premium */
+      color: #ffffff;
+    }
+    
+    .custom-table th {
+      padding: 12px 15px;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      border: 1px solid #2b4e6f;
+      text-align: center;
+    }
+
+    /* Gaya untuk BADAN TABEL (<tbody>) */
+    .custom-table td {
+      padding: 12px 15px;
+      border: 1px solid #e0e0e0;
+    }
+
+    /* Warna latar belakang sel Wilayah (Rowspan) agar menonjol */
+    .wilayah-cell {
+      background-color: #f5f7fa;
+      font-weight: bold;
+      color: #1e3d59;
+      text-align: center;
+    }
+
+    /* Efek baris belang-beling (Zebra striping) */
+    .custom-table tbody tr:nth-child(even) {
+      background-color: #f9fbfd;
+    }
+
+    /* Efek sorot saat kursor diarahkan ke baris (Hover Effect) */
+    .custom-table tbody tr:hover {
+      background-color: #f1f4f9;
+      transition: background-color 0.2s ease;
+    }
+
+    /* Gaya untuk KAKI TABEL (<tfoot>) */
+    .custom-table tfoot {
+      background-color: #eaeff5; /* Warna abu-abu kebiruan */
+      font-weight: bold;
+      color: #1e3d59;
+    }
+
+    .custom-table tfoot tr {
+      border-top: 2px solid #1e3d59;
+    }
+
+    .custom-table tfoot td {
+      border: 1px solid #d2dbe4;
+    }
+
+    /* Warna khusus untuk sel total akhir/rata-rata */
+    .highlight-total {
+      background-color: #e7f5ea; /* Warna Hijau Lembut */
+      color: #1e7e34;
+      text-align: center;
+      font-size: 15px;
+    }
+    
+    .empty-cell {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+  <table class="custom-table">
+    <!-- KEPALA TABEL (<thead>) -->
+    <thead>
+      <tr>
+        <th rowspan="3">Wilayah</th>
+        <th rowspan="3">Cabang</th>
+        <th rowspan="3">Nama Supervisor</th>
+        <th colspan="5">Laporan Performa Keuangan & Operasional</th>
+      </tr>
+      <tr>
+        <th colspan="2">Pendapatan</th>
+        <th colspan="2">Pengeluaran</th>
+        <th rowspan="2">Efisiensi Kerja</th>
+      </tr>
+      <tr>
+        <th>Target</th>
+        <th>Realisasi</th>
+        <th>Operasional</th>
+        <th>Logistik</th>
+      </tr>
+    </thead>
+
+    <!-- BADAN TABEL (<tbody>) -->
+    <tbody>
+      <!-- Blok Wilayah Barat -->
+      <tr>
+        <td rowspan="3" class="wilayah-cell">Barat</td>
+        <td>Cabang A1</td>
+        <td>Budi Santoso</td>
+        <td>Rp 50.000.000</td>
+        <td>Rp 55.000.000</td>
+        <td>Rp 10.000.000</td>
+        <td>Rp 5.000.000</td>
+        <td align="center">92%</td>
+      </tr>
+      <tr>
+        <td>Cabang A2</td>
+        <td>Siti Aminah</td>
+        <td>Rp 45.000.000</td>
+        <td>Rp 42.000.000</td>
+        <td>Rp 8.000.000</td>
+        <td>Rp 4.000.000</td>
+        <td align="center">88%</td>
+      </tr>
+      <tr>
+        <td>Cabang A3</td>
+        <td>Ahmad Rian</td>
+        <td>Rp 60.000.000</td>
+        <td>Rp 63.000.000</td>
+        <td>Rp 12.000.000</td>
+        <td>Rp 6.000.000</td>
+        <td align="center">95%</td>
+      </tr>
+
+      <!-- Blok Wilayah Timur -->
+      <tr>
+        <td rowspan="2" class="wilayah-cell">Timur</td>
+        <td>Cabang B1</td>
+        <td>Dewi Lestari</td>
+        <td>Rp 40.000.000</td>
+        <td>Rp 38.000.000</td>
+        <td>Rp 7.500.000</td>
+        <td>Rp 3.500.000</td>
+        <td align="center">85%</td>
+      </tr>
+      <tr>
+        <td>Cabang B2</td>
+        <td>Eko Prasetyo</td>
+        <td>Rp 55.000.000</td>
+        <td>Rp 58.000.000</td>
+        <td>Rp 11.000.000</td>
+        <td>Rp 5.500.000</td>
+        <td align="center">91%</td>
+      </tr>
+    </tbody>
+
+    <!-- KAKI TABEL (<tfoot>) -->
+    <tfoot>
+      <tr>
+        <td colspan="3" align="center">Total Keseluruhan</td>
+        <td>Rp 250.000.000</td>
+        <td>Rp 256.000.000</td>
+        <td>Rp 48.500.000</td>
+        <td>Rp 24.000.000</td>
+        <td rowspan="2" class="highlight-total">90.2%<br><span style="font-size: 11px; font-weight: normal;">(Rata-rata)</span></td>
+      </tr>
+      <tr>
+        <td colspan="3" align="center">Total Pengeluaran Gabungan</td>
+        <td colspan="2" class="empty-cell"></td>
+        <td colspan="2" align="center">Rp 72.500.000</td>
+      </tr>
+    </tfoot>
+  </table>
+
+</body>
+</html>
